@@ -913,6 +913,32 @@
       color: rgba(255,255,255,0.3);
     }
 
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 101;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .services-grid,
@@ -925,15 +951,124 @@
     }
 
     @media (max-width: 640px) {
-      section { padding: 72px 5%; }
+      /* Nav */
+      .nav-hamburger { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 72px;
+        left: 0; right: 0;
+        background: var(--green-dark);
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 5% 24px;
+        transform: translateY(-110%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+        z-index: 99;
+        display: flex;
+      }
+
+      .nav-links.open { transform: translateY(0); }
+
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+      .nav-links a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1rem;
+      }
+
+      .nav-cta {
+        display: block;
+        text-align: center;
+        margin-top: 12px;
+        padding: 13px 22px !important;
+        border-radius: 6px;
+      }
+
+      /* Hero */
+      section { padding: 64px 5%; }
+
+      .hero { flex-direction: column; justify-content: flex-start; min-height: 100svh; }
+
+      .hero-content {
+        padding: 0 6%;
+        margin-top: 100px;
+        padding-bottom: 32px;
+      }
+
+      .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+
+      .hero p { font-size: 1rem; margin-bottom: 28px; }
+
+      .hero-actions { flex-direction: column; gap: 12px; }
+
+      .btn-primary, .btn-secondary { justify-content: center; width: 100%; }
+
+      .hero-stats {
+        position: relative;
+        bottom: auto; left: auto; right: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        background: rgba(0,0,0,0.45);
+        padding: 20px 6%;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      .stat {
+        padding: 14px 12px;
+        border-right: 1px solid rgba(255,255,255,0.12);
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .stat:nth-child(2n) { border-right: none; }
+      .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+
+      .stat-number { font-size: 1.6rem; }
+
+      /* Trust bar */
+      .trust-bar {
+        gap: 0;
+        flex-direction: column;
+        padding: 0;
+      }
+
+      .trust-item {
+        padding: 14px 6%;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        width: 100%;
+      }
+
+      /* Sections */
       .services-grid,
       .programmes-grid,
       .testimonials-grid,
       .process-steps { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .hero-stats { gap: 24px; }
+
+      .service-card, .programme-card, .testimonial-card { padding: 28px 24px; }
+
+      .services-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; }
+
+      /* About */
+      .about { padding: 64px 6%; }
+
+      /* Areas */
+      .areas-content { gap: 36px; }
+      .areas-img { order: -1; }
+
+      /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-      .trust-bar { gap: 20px; }
+      footer { padding: 48px 5% 24px; }
+
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+      /* CTA section */
+      .cta-section { padding: 72px 6%; }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .cta-actions .btn-primary { justify-content: center; }
     }
   </style>
 </head>
@@ -944,7 +1079,10 @@
     <a href="#" class="nav-logo">
       <img src="https://greenheartlawncare.co.uk/wp-content/uploads/2020/10/website_logo_large-1.png" alt="GreenHeart Lawn Care" />
     </a>
-    <ul class="nav-links">
+    <button class="nav-hamburger" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#programmes">Programmes</a></li>
       <li><a href="#areas">Coverage</a></li>
@@ -1316,6 +1454,20 @@
   </footer>
 
   <script>
+    // Hamburger menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
     // Subtle hero parallax on load
     window.addEventListener('load', () => {
       document.getElementById('heroBg').classList.add('loaded');
