@@ -82,7 +82,6 @@
       padding: 9px 22px;
       border-radius: 6px;
       font-weight: 600 !important;
-      color: var(--green-dark) !important;
       transition: background 0.2s, transform 0.2s !important;
     }
 
@@ -230,9 +229,7 @@
       flex-wrap: wrap;
     }
 
-    .stat {
-      text-align: left;
-    }
+    .stat { text-align: left; }
 
     .stat-number {
       font-family: 'Playfair Display', serif;
@@ -605,13 +602,9 @@
       color: var(--green-dark);
     }
 
-    .programme-btn:hover {
-      background: rgba(255,255,255,0.1);
-    }
+    .programme-btn:hover { background: rgba(255,255,255,0.1); }
 
-    .programme-card.featured .programme-btn:hover {
-      background: var(--gold-light);
-    }
+    .programme-card.featured .programme-btn:hover { background: var(--gold-light); }
 
     /* ── PROCESS ── */
     .process { background: var(--off-white); }
@@ -736,10 +729,7 @@
       margin-bottom: 18px;
     }
 
-    .stars span {
-      color: var(--gold);
-      font-size: 1.1rem;
-    }
+    .stars span { color: var(--gold); font-size: 1.1rem; }
 
     .testimonial-card blockquote {
       font-size: 0.95rem;
@@ -777,10 +767,7 @@
       color: var(--green-dark);
     }
 
-    .author-info span {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
+    .author-info span { font-size: 0.8rem; color: var(--text-muted); }
 
     /* ── CTA ── */
     .cta-section {
@@ -908,10 +895,7 @@
       gap: 12px;
     }
 
-    .footer-bottom p {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.3);
-    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
 
     /* ── HAMBURGER ── */
     .nav-hamburger {
@@ -951,7 +935,6 @@
     }
 
     @media (max-width: 640px) {
-      /* Nav */
       .nav-hamburger { display: flex; }
 
       .nav-links {
@@ -961,16 +944,16 @@
         background: var(--green-dark);
         flex-direction: column;
         gap: 0;
-        padding: 8px 5% 24px;
-        transform: translateY(-110%);
-        transition: transform 0.3s ease;
+        padding: 0 5%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, padding 0.35s ease;
         box-shadow: 0 8px 24px rgba(0,0,0,0.35);
         z-index: 99;
         display: flex;
       }
 
-      .nav-links.open { transform: translateY(0); }
-
+      .nav-links.open { max-height: 420px; padding: 8px 5% 24px; }
       .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
 
       .nav-links a {
@@ -987,7 +970,6 @@
         border-radius: 6px;
       }
 
-      /* Hero */
       section { padding: 64px 5%; }
 
       .hero { flex-direction: column; justify-content: flex-start; min-height: 100svh; }
@@ -999,11 +981,8 @@
       }
 
       .hero h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
-
       .hero p { font-size: 1rem; margin-bottom: 28px; }
-
       .hero-actions { flex-direction: column; gap: 12px; }
-
       .btn-primary, .btn-secondary { justify-content: center; width: 100%; }
 
       .hero-stats {
@@ -1026,15 +1005,9 @@
 
       .stat:nth-child(2n) { border-right: none; }
       .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
-
       .stat-number { font-size: 1.6rem; }
 
-      /* Trust bar */
-      .trust-bar {
-        gap: 0;
-        flex-direction: column;
-        padding: 0;
-      }
+      .trust-bar { gap: 0; flex-direction: column; padding: 0; }
 
       .trust-item {
         padding: 14px 6%;
@@ -1042,30 +1015,19 @@
         width: 100%;
       }
 
-      /* Sections */
       .services-grid,
       .programmes-grid,
       .testimonials-grid,
       .process-steps { grid-template-columns: 1fr; }
 
       .service-card, .programme-card, .testimonial-card { padding: 28px 24px; }
-
       .services-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 36px; }
-
-      /* About */
       .about { padding: 64px 6%; }
-
-      /* Areas */
       .areas-content { gap: 36px; }
       .areas-img { order: -1; }
-
-      /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: 40px; }
       footer { padding: 48px 5% 24px; }
-
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
-
-      /* CTA section */
       .cta-section { padding: 72px 6%; }
       .cta-actions { flex-direction: column; align-items: stretch; }
       .cta-actions .btn-primary { justify-content: center; }
@@ -1203,7 +1165,7 @@
         <div class="service-icon">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </div>
-        <h3>Weed & Moss Control</h3>
+        <h3>Weed &amp; Moss Control</h3>
         <p>Targeted weed and moss treatments that eliminate the problem without damaging your lawn's healthy grass.</p>
       </div>
       <div class="service-card">
@@ -1251,7 +1213,7 @@
         <ul class="programme-features">
           <li>5 scheduled treatment visits</li>
           <li>Seasonal fertiliser applications</li>
-          <li>Weed & moss control</li>
+          <li>Weed &amp; moss control</li>
           <li>Online account access</li>
           <li>Dedicated lawn technician</li>
         </ul>
@@ -1281,11 +1243,11 @@
         <ul class="programme-features">
           <li>6+ scheduled visits</li>
           <li>All Essential Plus+ treatments</li>
-          <li>Aeration & scarification</li>
+          <li>Aeration &amp; scarification</li>
           <li>Overseeding as required</li>
           <li>Organic fertiliser option</li>
           <li>Reduced mowing treatments</li>
-          <li>Priority booking & support</li>
+          <li>Priority booking &amp; support</li>
         </ul>
         <a href="#contact" class="programme-btn">Get a Quote</a>
       </div>
@@ -1404,7 +1366,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           Email Us
         </a>
-</div>
+      </div>
       <a href="tel:+447702244134" class="cta-phone">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
         +44 (0) 770 22 44 134
@@ -1431,7 +1393,7 @@
         <h5>Services</h5>
         <ul>
           <li><a href="#services">Fertiliser Treatments</a></li>
-          <li><a href="#services">Weed & Moss Control</a></li>
+          <li><a href="#services">Weed &amp; Moss Control</a></li>
           <li><a href="#services">Aeration</a></li>
           <li><a href="#services">Scarification</a></li>
           <li><a href="#services">Overseeding</a></li>
@@ -1449,32 +1411,32 @@
     </div>
     <div class="footer-bottom">
       <p>© 2024 GreenHeart Lawn Care Ltd. All rights reserved.</p>
-      <p>Website demo by <a href="https://saturnresults.co.uk" style="color:rgba(255,255,255,0.4);text-decoration:none;">Saturn Results</a></p>
+      <p>Website by <a href="https://saturnresults.co.uk" style="color:rgba(255,255,255,0.4);text-decoration:none;">Saturn Results</a></p>
     </div>
   </footer>
 
   <script>
     // Hamburger menu toggle
     const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
+    const navMenu = document.getElementById('navLinks');
     navToggle.addEventListener('click', () => {
       navToggle.classList.toggle('open');
-      navLinks.classList.toggle('open');
+      navMenu.classList.toggle('open');
     });
-    navLinks.querySelectorAll('a').forEach(a => {
+    navMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         navToggle.classList.remove('open');
-        navLinks.classList.remove('open');
+        navMenu.classList.remove('open');
       });
     });
 
-    // Subtle hero parallax on load
+    // Hero image animation on load
     window.addEventListener('load', () => {
       document.getElementById('heroBg').classList.add('loaded');
     });
 
-    // Smooth active nav highlight
-    const sections = document.querySelectorAll('section[id], div[id]');
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
