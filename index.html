@@ -914,8 +914,8 @@
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 40px;
-      padding: 0 16px;
-      height: 38px !important;
+      padding: 0 14px;
+      height: 32px !important;
       width: auto !important;
       display: flex !important;
       flex-direction: row;
@@ -926,16 +926,16 @@
     }
 
     .trust-slide-icon {
-      width: 20px; height: 20px;
+      width: 16px; height: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
     }
 
-    .trust-slide-icon svg { width: 14px; height: 14px; color: var(--green-light); }
+    .trust-slide-icon svg { width: 12px; height: 12px; color: var(--green-light); }
 
-    .trust-slide-text { font-size: 0.8rem; font-weight: 600; color: var(--white); }
+    .trust-slide-text { font-size: 0.75rem; font-weight: 600; color: var(--white); }
 
     .trust-slide-sub { display: none; }
 
@@ -1014,7 +1014,7 @@
 
       section { padding: 64px 5%; }
 
-      .hero { flex-direction: column; justify-content: flex-start; min-height: 100svh; }
+      .hero { flex-direction: column; justify-content: flex-start; min-height: 100svh; padding-bottom: 0; }
 
       .hero-content {
         padding: 0 6%;
@@ -1032,22 +1032,23 @@
         bottom: auto; left: auto; right: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0;
-        background: rgba(0,0,0,0.45);
-        padding: 20px 6%;
+        gap: 10px;
+        background: transparent;
+        padding: 16px 5% 24px;
         width: 100%;
-        margin-top: auto;
+        margin-top: 0;
       }
 
       .stat {
-        padding: 14px 12px;
-        border-right: 1px solid rgba(255,255,255,0.12);
-        border-bottom: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 14px;
+        padding: 16px 14px;
+        text-align: center;
       }
 
-      .stat:nth-child(2n) { border-right: none; }
-      .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
-      .stat-number { font-size: 1.6rem; }
+      .stat-number { font-size: 1.5rem; }
+      .stat-label { font-size: 0.7rem; letter-spacing: 0.04em; }
 
       /* trust: hide desktop row, show mobile swiper */
       .trust-desktop { display: none !important; }
@@ -1478,17 +1479,15 @@
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    // Swiper trust ticker — mobile only, continuous loop
+    // Swiper trust ticker — mobile only, truly continuous
     if (window.matchMedia('(max-width: 640px)').matches) {
       new Swiper('.trustSwiper', {
         slidesPerView: 'auto',
         spaceBetween: 10,
         loop: true,
-        speed: 3500,
+        speed: 2500,
         autoplay: { delay: 0, disableOnInteraction: false },
-        allowTouchMove: true,
-        grabCursor: true,
-        freeMode: { enabled: true, momentum: false },
+        allowTouchMove: false,
       });
     }
 
