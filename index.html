@@ -1007,13 +1007,32 @@
       .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
       .stat-number { font-size: 1.6rem; }
 
-      .trust-bar { gap: 0; flex-direction: column; padding: 0; }
+      .trust-bar {
+        gap: 0;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .trust-bar::-webkit-scrollbar { display: none; }
 
       .trust-item {
-        padding: 14px 6%;
-        border-bottom: 1px solid rgba(255,255,255,0.07);
-        width: 100%;
+        flex: 0 0 72vw;
+        scroll-snap-align: center;
+        padding: 22px 20px;
+        border-right: 1px solid rgba(255,255,255,0.07);
+        border-bottom: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 1rem;
       }
+
+      .trust-icon { width: 26px; height: 26px; }
 
       .services-grid,
       .programmes-grid,
