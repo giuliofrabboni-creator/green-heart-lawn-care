@@ -904,10 +904,9 @@
     nav.nav-hidden { transform: translateY(-100%); box-shadow: none; }
 
     /* ── TRUST SLIDER ── */
-    .trust-section {
-      background: var(--green-dark);
-      padding: 0 20px 48px;
-    }
+    .trust-section { background: var(--green-dark); }
+    .trust-desktop { display: flex; }
+    .trust-mobile-slider { display: none; }
 
     .trust-slide {
       background: rgba(255,255,255,0.06);
@@ -1064,32 +1063,9 @@
       .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
       .stat-number { font-size: 1.6rem; }
 
-      .trust-bar {
-        gap: 0;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        padding: 0;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-
-      .trust-bar::-webkit-scrollbar { display: none; }
-
-      .trust-item {
-        flex: 0 0 72vw;
-        scroll-snap-align: center;
-        padding: 22px 20px;
-        border-right: 1px solid rgba(255,255,255,0.07);
-        border-bottom: none;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-        font-size: 1rem;
-      }
-
-      .trust-icon { width: 26px; height: 26px; }
+      /* trust: hide desktop row, show mobile swiper */
+      .trust-desktop { display: none !important; }
+      .trust-mobile-slider { display: block; padding: 32px 5% 48px; }
 
       .services-grid,
       .programmes-grid,
@@ -1167,38 +1143,52 @@
     </div>
   </section>
 
-  <!-- TRUST SLIDER -->
+  <!-- TRUST BAR -->
   <div class="trust-section">
-    <div class="swiper trustSwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide trust-slide">
-          <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-          <div class="trust-slide-text">Free Lawn Health Checks</div>
-          <div class="trust-slide-sub">No cost, no obligation assessment of your lawn</div>
-        </div>
-        <div class="swiper-slide trust-slide">
-          <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
-          <div class="trust-slide-text">Dedicated Lawn Technician</div>
-          <div class="trust-slide-sub">The same expert visits you every time</div>
-        </div>
-        <div class="swiper-slide trust-slide">
-          <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
-          <div class="trust-slide-text">Online Account Access</div>
-          <div class="trust-slide-sub">Track every visit and treatment online</div>
-        </div>
-        <div class="swiper-slide trust-slide">
-          <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg></div>
-          <div class="trust-slide-text">Organic Options Available</div>
-          <div class="trust-slide-sub">Eco friendly treatments for your family and pets</div>
-        </div>
-        <div class="swiper-slide trust-slide">
-          <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
-          <div class="trust-slide-text">Covering All of Devon</div>
-          <div class="trust-slide-sub">12+ towns from Exeter to Plymouth</div>
-        </div>
-      </div>
-      <div class="swiper-pagination trust-pagination"></div>
+
+    <!-- Desktop row -->
+    <div class="trust-bar trust-desktop">
+      <div class="trust-item"><svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Free Lawn Health Checks</div>
+      <div class="trust-item"><svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>Dedicated Lawn Technician</div>
+      <div class="trust-item"><svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>Online Account Access</div>
+      <div class="trust-item"><svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg>Organic Options Available</div>
+      <div class="trust-item"><svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Covering All of Devon</div>
     </div>
+
+    <!-- Mobile Swiper -->
+    <div class="trust-mobile-slider">
+      <div class="swiper trustSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide trust-slide">
+            <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+            <div class="trust-slide-text">Free Lawn Health Checks</div>
+            <div class="trust-slide-sub">No cost, no obligation assessment of your lawn</div>
+          </div>
+          <div class="swiper-slide trust-slide">
+            <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+            <div class="trust-slide-text">Dedicated Lawn Technician</div>
+            <div class="trust-slide-sub">The same expert visits you every time</div>
+          </div>
+          <div class="swiper-slide trust-slide">
+            <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+            <div class="trust-slide-text">Online Account Access</div>
+            <div class="trust-slide-sub">Track every visit and treatment online</div>
+          </div>
+          <div class="swiper-slide trust-slide">
+            <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg></div>
+            <div class="trust-slide-text">Organic Options Available</div>
+            <div class="trust-slide-sub">Eco friendly treatments for your family and pets</div>
+          </div>
+          <div class="swiper-slide trust-slide">
+            <div class="trust-slide-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div class="trust-slide-text">Covering All of Devon</div>
+            <div class="trust-slide-sub">12+ towns from Exeter to Plymouth</div>
+          </div>
+        </div>
+        <div class="swiper-pagination trust-pagination"></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- ABOUT -->
@@ -1469,4 +1459,97 @@
         <div class="footer-socials">
           <a href="https://facebook.com/GreenHeartLawnCare" target="_blank" rel="noopener" aria-label="Facebook">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-        
+          </a>
+          <a href="https://instagram.com/greenheartlawncareuk/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Fertiliser Treatments</a></li>
+          <li><a href="#services">Weed &amp; Moss Control</a></li>
+          <li><a href="#services">Aeration</a></li>
+          <li><a href="#services">Scarification</a></li>
+          <li><a href="#services">Overseeding</a></li>
+          <li><a href="#services">Lawn Renovation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+447702244134">+44 (0) 770 22 44 134</a></li>
+          <li><a href="mailto:info@greenheartlawncare.co.uk">info@greenheartlawncare.co.uk</a></li>
+          <li><a href="#areas">Larcombe Farmhouse, Diptford,<br/>Totnes, TQ9 7PD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 GreenHeart Lawn Care Ltd. All rights reserved.</p>
+      <p>Website by <a href="https://saturnresults.co.uk" style="color:rgba(255,255,255,0.4);text-decoration:none;">Saturn Results</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    // Swiper trust slider — mobile only
+    if (window.matchMedia('(max-width: 640px)').matches) {
+      new Swiper('.trustSwiper', {
+        slidesPerView: 1.15,
+        spaceBetween: 16,
+        centeredSlides: true,
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+        pagination: { el: '.trust-pagination', clickable: true },
+        grabCursor: true,
+      });
+    }
+
+    // Nav hide on scroll down, show on scroll up (Instagram style)
+    const navEl = document.querySelector('nav');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const cur = window.scrollY;
+      if (cur <= 60) { navEl.classList.remove('nav-hidden'); }
+      else if (cur > lastScroll + 4) { navEl.classList.add('nav-hidden'); }
+      else if (cur < lastScroll - 4) { navEl.classList.remove('nav-hidden'); }
+      lastScroll = cur;
+    }, { passive: true });
+
+    // Hamburger menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navMenu.classList.remove('open');
+      });
+    });
+
+    // Hero image animation on load
+    window.addEventListener('load', () => {
+      document.getElementById('heroBg').classList.add('loaded');
+    });
+
+    // Active nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = link.getAttribute('href') === '#' + entry.target.id
+              ? 'var(--green-light)' : '';
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
